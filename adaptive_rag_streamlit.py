@@ -15,7 +15,8 @@ if not GROQ_API_KEY:
 
 # Initialize clients
 client = Groq(api_key=GROQ_API_KEY)
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+embedding_model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
+
 
 # ========== Core Functions ==========
 def extract_text_from_pdf(pdf_path):
