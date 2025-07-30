@@ -2,15 +2,16 @@ import os
 import fitz  # PyMuPDF
 import numpy as np
 import streamlit as st
-from dotenv import load_dotenv
 from groq import Groq
+import streamlit as st
 from sentence_transformers import SentenceTransformer
 
 # Load environment variables
-load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+GROQ_API_KEY = st.secrets.get("GROQ_API_KEY")
 if not GROQ_API_KEY:
-    raise ValueError("Missing GROQ_API_KEY in .env file")
+    raise ValueError("Missing GROQ_API_KEY in file")
+
 
 # Initialize clients
 client = Groq(api_key=GROQ_API_KEY)
